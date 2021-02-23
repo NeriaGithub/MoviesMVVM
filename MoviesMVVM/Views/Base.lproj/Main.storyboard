@@ -17,23 +17,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="DRb-Dj-Xj0">
+                                <rect key="frame" x="16" y="32" width="448" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y9n-Fm-Yvk">
-                                <rect key="frame" x="0.0" y="32" width="480" height="288"/>
+                                <rect key="frame" x="0.0" y="88" width="480" height="232"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DRb-Dj-Xj0" secondAttribute="trailing" constant="16" id="38X-pL-hZO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Y9n-Fm-Yvk" secondAttribute="bottom" id="Cok-RN-3LX"/>
+                            <constraint firstItem="DRb-Dj-Xj0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="HYP-wG-sRo"/>
                             <constraint firstItem="Y9n-Fm-Yvk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LVk-gD-J0m"/>
-                            <constraint firstItem="Y9n-Fm-Yvk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aBx-21-ym3"/>
+                            <constraint firstItem="Y9n-Fm-Yvk" firstAttribute="top" secondItem="DRb-Dj-Xj0" secondAttribute="bottom" id="NnS-PX-7rc"/>
+                            <constraint firstItem="DRb-Dj-Xj0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="mLq-zp-CNB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Y9n-Fm-Yvk" secondAttribute="trailing" id="nM7-FP-bhh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Movies List" id="4mZ-Zg-kf8"/>
                     <connections>
                         <outlet property="movieListTableView" destination="Y9n-Fm-Yvk" id="Ug6-2n-HcT"/>
+                        <outlet property="searchBar" destination="DRb-Dj-Xj0" id="zWM-MM-IXP"/>
                         <segue destination="UQc-IB-OuK" kind="show" identifier="movieSegue" id="wbn-IN-feg"/>
                     </connections>
                 </viewController>

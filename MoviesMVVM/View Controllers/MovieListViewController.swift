@@ -10,12 +10,21 @@ import UIKit
 class MovieListViewController: UIViewController {
     //MARK: - Properties
     @IBOutlet weak var movieListTableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!{
+        didSet{
+            searchBar.delegate = self
+        }
+    }
     private var tableController:TableController!
     private var selectedIndex:Int = 0
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         ConfigureInit()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     private func ConfigureInit(){
@@ -39,6 +48,22 @@ extension MovieListViewController:TableControllerDelegate{
     func selectedMovie(atIndex index: Int) {
         selectedIndex = index
         performSegue(withIdentifier: "movieSegue", sender: self)
+    }
+}
+
+extension MovieListViewController:UISearchBarDelegate{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        tableController.movieListVM?.filterMovies(text: searchBar.text!)
+        movieListTableView.reloadData()
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            tableController.movieListVM?.filterMovies()
+            movieListTableView.reloadData()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
     }
 }
 

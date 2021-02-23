@@ -45,4 +45,14 @@ class MovieListViewModel {
     func getMovieModelAt(index:Int) -> MovieViewModel {
         return MovieViewModel(with: movieModelArray[index])
     }
+    
+    func filterMovies(text:String = "") {
+        if !text.isEmpty {
+            movieModelArray = movieModelArray.filter({$0.title!.lowercased().contains(text.lowercased())})
+        } else {
+            movieModelArray = CoreDataManager.shared.movies
+        }
+        
+        print(movieModelArray.count)
+    }
 }
